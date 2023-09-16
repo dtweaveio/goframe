@@ -41,25 +41,7 @@ func (app *App) buildCommand() {
 	}
 
 	if app.runFunc != nil {
-		cmd.RunE = func(cmd *cobra.Command, args []string) error {
-			// marshall conf
-			if !app.noConfig {
-				if err := viper.BindPFlags(cmd.Flags()); err != nil {
-					return err
-				}
-				if err := viper.Unmarshal(app.options); err != nil {
-					return err
-				}
-			}
-			if app.options != nil {
-				if err := app.applyOptionRules(); err != nil {
-					return err
-				}
-			}
-
-			flag.PrintFlags(cmd.Flags())
-			return app.runFunc(app.name)
-		}
+		cmd.RunE = app.runCommand
 	}
 
 	if app.postRunFunc != nil {
@@ -90,10 +72,9 @@ func (app *App) buildCommand() {
 	}
 
 	if len(app.commands) > 0 {
-		for _, command := range app.commands {
-			cmd.AddCommand(command.CobraCommand())
+		for _, c := range app.commands {
+			cmd.AddCommand(c.CobraCommand())
 		}
-		//samples.SetHelpCommand(helpCommand(FormatBaseName(app.name)))
 	}
 
 	// add new global flagset to samples FlagSet
@@ -101,6 +82,26 @@ func (app *App) buildCommand() {
 	cmd.Flags().AddFlagSet(namedFlagSets.FlagSet("global"))
 
 	app.cmd = cmd
+}
+
+func (app *App) runCommand(cmd *cobra.Command, args []string) error {
+	// marshall conf
+	if !app.noConfig {
+		if err := viper.BindPFlags(cmd.Flags()); err != nil {
+			return err
+		}
+		if err := viper.Unmarshal(app.options); err != nil {
+			return err
+		}
+	}
+	if app.options != nil {
+		if err := app.applyOptionRules(); err != nil {
+			return err
+		}
+	}
+
+	flag.PrintFlags(cmd.Flags())
+	return app.runFunc(app.name)
 }
 
 func (app *App) applyOptionRules() error {
