@@ -2,15 +2,18 @@ package main
 
 import (
 	"dtweave.io/goframe/app"
+	"dtweave.io/goframe/samples/myoptions"
 )
 
 func main() {
+	opts := myoptions.NewMyOptions()
+
 	builder := app.NewAppBuilder()
 	app := builder.
-		WithName("dataweave").
+		WithName("myapp").
 		WithShortName("myapp").
-		WithDesc("des").
-		WithNoConfig(true).
+		WithDesc("this is my app").
+		WithOptions(opts).
 		WithRun(func(basename string) error {
 			return nil
 		}).

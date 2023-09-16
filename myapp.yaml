@@ -11,3 +11,9 @@
 #    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
+# MySQL 数据库相关配置
+mysql:
+  host: 127.0.0.1:3306 # MySQL 机器 ip 和端口，默认 127.0.0.1:3306
+  username: samples # MySQL 用户名(建议授权最小权限集)
+  password: samples_password # MySQL 用户密码
+  database: samples_db # iam 系统所用的数据库名
