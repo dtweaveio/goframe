@@ -1,8 +1,8 @@
 package main
 
 import (
-	"dtweave.io/goframe/app"
-	"dtweave.io/goframe/samples/myoptions"
+	"github.com/dtweaveio/goframe/app"
+	"github.com/dtweaveio/goframe/samples/myoptions"
 )
 
 func main() {

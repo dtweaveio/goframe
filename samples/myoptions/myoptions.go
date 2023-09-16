@@ -1,6 +1,6 @@
 package myoptions
 
-import myflag "dtweave.io/goframe/app/flag"
+import myflag "github.com/dtweaveio/goframe/app/flag"
 
 type MyOptions struct {
 	MysqlOptions *MysqlOptions `json:"mysql" mapstructure:"mysql"`

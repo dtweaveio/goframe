@@ -1,6 +1,6 @@
 package app
 
-import "dtweave.io/goframe/app/flag"
+import "github.com/dtweaveio/goframe/app/flag"
 
 type Options interface {
 	// Flags returns flags for sub gateway
