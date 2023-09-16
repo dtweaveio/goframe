@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"dtweave.io/goframe/app/flag"
-	"dtweave.io/goframe/app/version"
+	"github.com/dtweaveio/goframe/app/flag"
+	"github.com/dtweaveio/goframe/app/version"
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
