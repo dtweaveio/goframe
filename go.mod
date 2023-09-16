@@ -1,4 +1,4 @@
-module dtweave.io/goframe
+module github.com/dtweaveio/goframe
 
 go 1.19
 
