@@ -32,8 +32,9 @@ func NewAppBuilder() *AppBuilder {
 	return &AppBuilder{}
 }
 
-func (b *AppBuilder) Build() App {
-	return b.app
+func (b *AppBuilder) Build() *App {
+	b.app.buildCommand()
+	return &b.app
 }
 
 func (b *AppBuilder) WithName(name string) *AppBuilder {
