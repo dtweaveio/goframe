@@ -14,7 +14,6 @@ import (
 )
 
 func (app *App) Run() {
-	app.buildCommand()
 	if err := app.cmd.Execute(); err != nil {
 		fmt.Printf("%v %v\n", color.RedString("Error:"), err)
 		os.Exit(1)
